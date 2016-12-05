@@ -6,30 +6,30 @@ thumbnail = "images/blog/logo-google-cloud.png"
 tags = ["cloud", "google-cloud", "aws"]
 +++
 
-Having worked a lot on AWS at my previous workplace, I could gain a lot of experience about it and to be honest, I still think it's the best cloud platform today.
+Having worked a lot on AWS at my previous workplace I gained a lot of experience about it and to be honest I still think it's the best cloud platform today.
 
-At my current work, I am managing a product hosted on Google Cloud
-(I made most of the operation part of the migration from a hosted dedicated hardware to Cloud)
+At my current work I am managing a product hosted on Google Cloud
+(I made most of the operation part of the migration from a hosted dedicated hardware to Cloud).
 
-I have to say, I miss AWS, Google cloud is very immature in a LOT of points,
+I have to say that I miss AWS; Google cloud is very immature in a LOT of points.
 
-I'm gonna try to list most of the pains I've encountered, but also the good points I've seen.
+I'm gonna try to list most of the flaws I've encountered, but also the good points I've seen.
 
 Negative points
 ================
 
-Google is blocking some countries from their hosting platform
+Google is blocking some countries from accessing their hosting platform
 --------------------------------------------------------------
 
-Something good to know if you plan to make your infrastructure available to the "global world".
-Google is actually blocking many countries from accessing many resources hosted on Google Cloud,
-and you have no way to allow them without having to do some dirty hacking like putting a reverse proxy
+Something good to know if you plan to make your infrastructure available to the worldwide Internet.
+Google is blocking many countries from accessing the resources hosted on Google Cloud
+and you have no way to allow them to access your platform without having to do some dirty hacking (like putting a reverse proxy
 outside of your platform with a DNS server capable of doing geo-discrimination to forward those "forbidden" countries
-to your external reverse proxy.
+to your external reverse proxy).
 
-We had the surprise when one new client from Iran could not connect to our platform, and we would not see any packet coming to any of our servers.
+We had the surprise when one of our new clients from Iran could not connect to our platform and we would not see any packet coming to any of our servers, even after deep analysis.
 
-After contacting the Google Cloud support, I got the confirmation with surprise that they do block some countries : https://support.google.com/a/answer/2891389?hl=en
+After contacting the Google Cloud support we got the confirmation, with surprise, that they do block some countries : https://support.google.com/a/answer/2891389?hl=en
 
 >  Google restricts access to some of its business services in certain countries or regions, such as Crimea, Cuba, Iran, North Korea, Sudan, and Syria.
 
@@ -48,34 +48,34 @@ US Department of Treasury, Iran Sanctions:
 BGP over IPSEC works but not for your container networks
 -----------------------------------------------------------
 
-Something to know is that, if you plan to use VPN and a Container network (with managed Kubernetes), there are no ways, for now, to be able to distribute using BGP the networks from Kubernetes, so you will have to both use BGP for your compute networks and static routing for your containers networks, or static routing for everything.
+Something to know is that, if you plan to use VPN and a Container network (with managed Kubernetes) there are no ways (for now) to be able to distribute using BGP the networks from Kubernetes, so you will have to both use BGP for your compute networks and static routing for your containers networks or static routing for everything.
 
 Instances can only have a single private IP
 --------------------------------------------
 
-Only one IP and one network interface per instance, that sucks if you want to do a VIP-like system, there are no real solution except play with the routing table to forward an IP or a subnet to an instance, but that feels like tweaking...
+Only one IP and one network interface per instance. That sucks if you want to do a VIP-like system as there are no real solutions except to play with the routing tables to forward an IP or a subnet to an instance, but that feels like tweaking compared to having a real moveable internal IP.
 
 Instance private IP can only be changed by destroying the instance
 -----------------------------------------------------------------
 
-This is one of the worst points, if you have to change the IP of your instance, you have to destroy it by keeping the disk, and create a new instance with the new IP with this disk mounted... No, you can't change the IP even if the instance is shutdown.
+This is one of the worst points. If you have to change the IP of your instance you have to destroy it by keeping the disks and create a new instance with the new IP and the previous disks mounted... No, you can't change the IP even if the instance is shutdown.
 
 Windows instances will only activate if they have a public IP
 --------------------------------------------------------------
 
-We had a surprise when our Windows instance showed the "Activate now" messages, and after many tentative to activate them, seeing that they could not contact the Google KMS correctly, after dealing with the support, we had to add a public IP on every instance so they can contact correctly the KMS server, using a nat instance didn't work here. (So yes, if you have you ADDS in Google Cloud, they will need public IP to activate correctly...)
+We had a surprise when our Windows instances showed the "Activate now" messages and after many tentatives to activate them, seeing that they could not contact the Google Cloud KMS correctly and after dealing with the support, we had to add a public IP on every instance so they can contact correctly the KMS server. Using a NAT instance didn't work here. (So yes, if you have your ADDS in Google Cloud, they will need public IPs to activate correctly...)
 
 IAM is VERY limited
 --------------------
 
-Most of the IAM settings are either "Read access on everything", "Write access on everything" or "Admin access on everything"
+Most of the IAM settings are either "Read access on everything", "Write access on everything" or "Admin access on everything".
 
 Load-balancers have to be public
 --------------------------------
 
 The load balancers can only have a public front address and reach instances that have a public IP...
 
-There is a beta of the new load balancer that would allow if to be public, I didn't have the occasion to take a look yet (Last time I tried, I could not make it work correctly)
+There is a beta of the new load balancer that can be private but I didn't have the occasion to take a look yet (Last time I tried, I could not make it work correctly).
 
 
 Cloud SQL is limited to MySQL
@@ -92,9 +92,7 @@ There is also a feature request about having a managed PostgreSQL, but no more i
 No managed cache (Redis, Memcached)
 ------------------------------------
 
-For now, there are no and no plan to have managed caches like Redis or Memcached, it's sad because it's one of the most important components of any good web application.
-
-
+For now, there is no managed cache and no plan to have something like Redis or Memcached. It's sad because it's one of the most important components of any good web application.
 
 
 Positive points
@@ -103,23 +101,25 @@ Positive points
 Your subnets are not bound to a zone
 -------------------------------------
 
-Something nice is that the subnets you define can spread over many availability zones, no need to have a subnet per zone, that allows you to migrate the instance between zones by keeping your internal IP address (But you have to do it manually because the migration tool doesn't guarantee that you instance will take the same IP than before.)
+Something nice is that the subnets you define can spread over many availability zones. No need to have a subnet per zone. This allows you to migrate the instances between zones by keeping your internal IP addresses but you have to do it manually because the migration tool doesn't guarantee that your instance will take the same IP than before.
 
 Managed Kubernetes is awesome
 -----------------------------
 
-I had a horrible experience with Amazon ECS when I tried it (Ok, it was just released, I hope they improved it), my tests on Kubernetes showed me something far more mature, reliable and easy to use (but also more complicated in term of features)
+I had a horrible experience with Amazon ECS when I tried it. Ok, it was just released, I hope they improved it since.
+My tests on Kubernetes showed me something far more mature, reliable and easy to use but also more complicated in terms of features.
 
 Automatic SSH keys distribution management
 ------------------------------------------
 
-No more manual SSH keys management just put your SSH keys in the global metadata and they will automatically be distributed in all the instances of your account. However, I didn't try to check how it works when an SSH key is removed (Is it deleted from the instances or left there ?)
+No more manual SSH keys management. Just put your SSH keys in the global metadata and they will automatically be distributed in all the instances of your account. However, I didn't try to check how it works when an SSH key is removed.
+Is it deleted from the instances or left there ?
 
 Automatic migration of the instances in case of hardware failure or maintenance
 -------------------------------------------------------------------------------
 
-When you create an instance, you can define a policy about how to react when the host is having an issue or when a maintenance is planned, either shut it down or migrate it without downtime to another host.
-We just left it to migrate automatically and never had any issue, except some surprise when we saw in the Google Cloud logs that we had a lot of critical instances that got migrated without any service interruption.
+When you create an instance you can define a policy about how to react when the host is having an issue or when a maintenance is planned. Either shut it down or migrate it without downtime to another host.
+We just left it to migrate automatically and never had any issue, except some surprises when we saw in the Google Cloud logs that we had a lot of critical instances that got migrated without any service interruption.
 
 Lower price on long running instance
 -------------------------------------
@@ -132,14 +132,17 @@ Something to know is that if you leave your instance running permanently, Google
 Custom machines
 ---------------
 
-One option I didn't see anywhere else is that you can either use predefined instances type or build your own type (I want X CPUs with X Gigabytes of RAM)
+One option I didn't see anywhere else is that you can either use predefined instances type or build your own type (i.e.: I want X CPUs with X Gigabytes of RAM)
 
 So..
 =====
 
-I think right now the only advantages of Google Cloud are mostly the price of the resources (It's usually far cheaper than AWS) (But far more expensive in time are a lot of features are missing and you'll get some pain trying to implement some H.A solutions with their very limited network layer), and the manager Kubernetes (if you use it).
+I think right now the only advantages of Google Cloud is mostly the price of the platform.
+It's usually far cheaper than AWS or Azure but far more time expensive as a lot of features are missing.
+You will need a lot of time to implement highly available solutions because of their very limited network layer if you don't use their own managed solution (If you plan to setup an H.A PostgreSQL or an H.A RabbitMQ, etc.)
+Also Kubernetes is a very good platform compared to AWS ECS.
 
-Google Cloud is still very new, I hope one day they will really compete with AWS in term of feature, but for now it's as far as I've seen having a quite slow progress when you compare to what you see on the AWS re'invent that release like 20 features in one shot (and BIG ones).
+Google Cloud is still very new. I hope one day they will really compete with AWS in terms of features, but for now, as far as I've seen they have a quite slow progress when you compare to what you see on the AWS like with "reInvent" that releases like 20 features in one shot (and BIG ones).
 
 Let's hope Google will invest more into its cloud platform to take on AWS.
 
