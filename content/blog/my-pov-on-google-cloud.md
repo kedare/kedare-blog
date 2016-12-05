@@ -3,6 +3,7 @@ title = "My point of view on Google Cloud"
 draft = false
 date = "2016-12-05T12:24:07+01:00"
 thumbnail = "images/blog/logo-google-cloud.png"
+tags = ["cloud", "google-cloud", "aws"]
 +++
 
 Having worked a lot on AWS at my previous workplace, I could gain a lot of experience about it and to be honest, I still think it's the best cloud platform today.
