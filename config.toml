@@ -4,6 +4,7 @@ languageCode = "en-us"
 theme = "hugo_theme_robust"
 disqusShortname = "kedare-blog"
 uglyurls = true
+googleAnalytics = "UA-48657517-2"
 
 [params]
   contact = "mathieu.poussin@netyxia.net"
