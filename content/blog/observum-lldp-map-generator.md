@@ -1,5 +1,5 @@
 +++
-title = "Observium LDDP graph generator"
+title = "Observium LLDP graph generator"
 date = "2015-01-25"
 tags = ["observium", "python", "telco"]
 thumbnail = "images/blog/observium-map-generator.png"
