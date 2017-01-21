@@ -11,3 +11,27 @@ td {
 .article-body pre code {
     font-size: 0.7em;
 }
+
+.article-body blockquote {
+    padding: 15px;
+}
+
+.vcenter {
+    align-items: center;
+    vertical-align: middle;
+}
+
+.social {
+    display: block;
+}
+
+.social a {
+    color: #449;
+    transition: color 0.5s;
+    transition: text-shadow 0.5s;
+}
+
+.social a:hover  {
+    color: white;
+    text-shadow: black 0px 0px 20px;
+}
