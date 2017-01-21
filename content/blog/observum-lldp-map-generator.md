@@ -2,6 +2,7 @@
 title = "Observium LLDP graph generator"
 date = "2015-01-25"
 tags = ["observium", "python", "telco"]
+description = "Introduction to my small observium LLDP graph script"
 thumbnail = "images/blog/observium-map-generator.png"
 +++
 

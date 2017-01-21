@@ -2,6 +2,7 @@
 title = "Tips: Cisco Configuration Archives"
 date = "2014-02-11"
 tags = ["cisco", "telco"]
+description = "How to make your Cisco configuration versioned"
 thumbnail = "images/blog/logo-cisco.png"
 +++
 

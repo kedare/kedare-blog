@@ -2,6 +2,7 @@
 title = "Tips: Alcatel AOS memo"
 date = "2014-02-12"
 tags = ["alcatel", "telco"]
+description = "My small Alcatel AOS memo"
 thumbnail = "images/blog/logo-alcatel-lucent.png"
 +++
 

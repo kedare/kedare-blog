@@ -3,6 +3,7 @@ title = "My point of view on Google Cloud"
 draft = false
 date = "2016-12-05T12:24:07+01:00"
 thumbnail = "images/blog/logo-google-cloud.png"
+description = "POV on my not so favorite cloud platform"
 tags = ["cloud", "google-cloud", "aws"]
 +++
 
