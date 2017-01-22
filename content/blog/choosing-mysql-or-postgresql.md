@@ -22,7 +22,7 @@ Information              | MySQL                   | PostgreSQL                 
 **Licence**                  | GNU GPL or proprietary      | [PostgreSQL](https://www.postgresql.org/about/licence/)                            | Proprietary          |
 **Year of creation**         | 1995                    | 1996 (based on Ingres, 1982)   | 1989                 |
 **Main contributors**        | Oracle,<br/> Google,<br/> Percona,<br/>Facebook | EnterpriseDB,<br/>2ndQuadrant     | Microsoft            |
-**Projects/Companies using it**  | Facebook,<br/>Github,<br/>LinkedIn,<br/>Flickr,<br/>Wikipedia,<br/>Twitter,<br/>Digg       | Openstreetmap,<br/>Disqus,<br/>Yahoo,<br/>Reddit   | Microsoft,<br/>StackOverflow |
+**Projects/Companies using it**  | Facebook,<br/>Github,<br/>LinkedIn,<br/>Flickr,<br/>Wikipedia,<br/>Twitter,<br/>Digg       | Openstreetmap,<br/>Disqus,<br/>Yahoo,<br/>Reddit,<br/>Skype,<br/>Github  | Microsoft,<br/>StackOverflow |
 **Slogan**                   | The most popular open source database | The world's most advanced open source database | None ? |
 **Last version**             | 5.7                     | 9.6                            | 2016                 |
 
@@ -406,8 +406,6 @@ If you want to play with MySQL cluster, I invite you to read this article so you
 ### PostgreSQL
 
 PostgreSQL doesn't have any official solution for this kind of high availability, the PostgreSQL core offers replication, but nothing that would allow automatic failover.
-
-Since I had the occasion to set up a highly available PostgreSQL setup, I can tell you that this has been pure hell, in my case, this was a 3 servers (for quorum) setup, using Postgresql 9.6, PgPool and REPMGR. Even after many days, I could not have anything really stable (Well, it was fine as soon as there was no failover). At the end, the application was not needing any PostgreSQL specific feature, and in a few hours, the application got migrated to MySQL so we could use Google Cloud SQL (Managed H.A MySQL instances).
 
 There are some projects trying to achieve high availability, I can't talk much about them as I either just read about them (Postgres-XL) or played a very little bit (Stolon over Kubernetes).
 
