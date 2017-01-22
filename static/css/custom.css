@@ -35,3 +35,11 @@ td {
     color: white;
     text-shadow: black 0px 0px 20px;
 }
+
+article.li .thumb {
+    height: 12rem;
+}
+
+article.single .thumb {
+    height: 30rem;
+}
