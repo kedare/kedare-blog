@@ -6,10 +6,10 @@ description = "A small comparisons between the most popular open source relation
 tags = ["databases", "database", "mysql", "postgresql", "rdbms", "open source", "mssql", "sql server"]
 +++
 
-# Introduction
-
 Here is one of the most complicated and debated choice in the open source world.
 Selecting your relational database system.
+
+<!--more-->
 
 I will speak here only of MySQL and PostgreSQL as they are the databases systems.
 

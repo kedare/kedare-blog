@@ -6,7 +6,7 @@ description = "My small Alcatel AOS memo"
 thumbnail = "images/blog/logo-alcatel-lucent.png"
 +++
 
-Here is a small introduction to Alcatal AOS with some examples.
+Here is a small introduction to Alcatel AOS with some examples.
 
 <!--more-->
 

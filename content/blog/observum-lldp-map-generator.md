@@ -8,6 +8,8 @@ thumbnail = "images/blog/observium-map-generator.png"
 
 Here is a small script I made.
 
+<!--more-->
+
 It uses the Observium database to generate a FULL topology of your network using LLDP entities.
 Links are colored using link load, and link size depend of the link capacity.
 You just need to be sure that each device see its neighbours with correct hostnames.

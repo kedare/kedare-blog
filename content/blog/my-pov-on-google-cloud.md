@@ -9,6 +9,8 @@ tags = ["cloud", "google-cloud", "aws"]
 
 Having worked a lot on AWS at my previous workplace I gained a lot of experience about it and to be honest I still think it's the best cloud platform today.
 
+<!--more-->
+
 At my current work I am managing a product hosted on Google Cloud
 (I made most of the operation part of the migration from a hosted dedicated hardware to Cloud).
 
