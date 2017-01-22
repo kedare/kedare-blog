@@ -1,9 +1,8 @@
 +++
-title = "Choosing your next relational database"
-draft = true
+title = "Choosing MySQL or PostgreSQL"
 date = "2017-01-21T11:51:30+01:00"
 thumbnail = "images/blog/logo-mysql-pgsql.png"
-description = "A small comparisons between the most popular relatinal databases"
+description = "A small comparisons between the most popular open source relational databases"
 tags = ["databases", "database", "mysql", "postgresql", "rdbms", "open source", "mssql", "sql server"]
 +++
 
