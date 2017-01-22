@@ -504,7 +504,7 @@ I want commercial support             | YES    | YES        |
 I'm an open source extremist          | NO     | YES        |
 I want transactional DDL.             | NO     | YES        |
 I want integration with LDAP.         | NO     | YES        |
-I want to write advanced procedures.  | YES    | YES        |
+I want to write advanced procedures.  | NO     | YES        |
 I want functional indexes.            | NO     | YES        |
 I want partitioning.                  | YES    | NO         |
 
