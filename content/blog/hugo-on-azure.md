@@ -147,6 +147,13 @@ Unpublish-AzureRmCdnEndpointContent -ResourceGroupName kedare-lab-blog -ProfileN
 
 Then save everything, you can queue it to try if it's working fine.
 
+Result
+------
+
+Here is how the full process should looks like :
+
+<center>![Free pricing tier](/images/blog/azure-hugo-process.png)</center>
+
 Web Hook
 =========
 
