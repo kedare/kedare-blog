@@ -6,7 +6,6 @@ disqusShortname = "kedare-blog"
 uglyurls = true
 googleAnalytics = "UA-48657517-2"
 enableRobotsTXT = false
-enableGitInfo = true
 
 [author]
   name = "Mathieu Poussin"
