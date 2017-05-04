@@ -11,9 +11,10 @@ I recently moved my blog (this one) from S3 + CloudFront to Azure because I want
 
 I am using the Premium Verizon VPN from Azure and I am getting more or less twice better performance than what I was getting from CloudFront.
 
-The artifacts are now hosted directly in an Azure Web App instead of a bucket, I replace CloudFront by Azure CDN (Premium Verizon), I've also setup a CI workflow using Microsoft Visual Studio Team Service (for free)
+The artifacts are now hosted directly in an Azure Web App instead of a bucket. 
+I replaced CloudFront by Azure CDN (Premium Verizon) and I've also setup a CI workflow using Microsoft Visual Studio Team Service (for free).
 
-Of course, this article can be used without any issue with any other website generator (Lektor, Hexo, etc.) easily, just swap the Hugo part on the CI by your static site generator.
+Of course, this article can be used without any issue with any other website generator (Lektor, Hexo, etc.) . Easly, just swap the Hugo part on the CI by your static site generator.
 
 <!--more-->
 
@@ -24,7 +25,7 @@ The inner: Azure Web App
 
 The application itself will be hosted as an Azure Web App.
 
-For this component, you can use without any problem the free version, you don't need SSL as this level (The CDN will provide it) or the custom domain (The CDN will also provide it)
+For this component, you can use without any problem the free version, you don't need SSL at this level (The CDN will provide it) or the custom domain (The CDN will also provide it)
 
 Start by creating you new Web App, define a new resource group if needed, make sure you create a new App Service in your location (Well it doesn't really matter as the CDN will redistribute your content), the only real important thing on your App Service is to select the "Free" pricing tier (Except if you expect your Hugo build result to exceed 1GB)
 
