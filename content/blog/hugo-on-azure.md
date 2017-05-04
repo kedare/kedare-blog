@@ -47,7 +47,7 @@ We are going to create the CDN profile, go to the marketplace and search for the
 
 Here enter the basic information, like the name, I recommend using the same name than your Web App.
 
-On the Pricing tier, we will select ```Premium Verizon```, because for most blog, the traffic should not be big enough to really have an important price, feels free to try with another pricing tier, everything should work the same (But with lower performances, also Akamai is very slow to purge the CDN (Around 8 minutes vs 2 minutes for Verizon))
+On the Pricing tier, we will select ```Premium Verizon```, because for most blog, the traffic should not be big enough to really have an important price, feels free to try with another pricing tier, everything should work the same (But with lower performances, also Akamai is very slow to purge the CDN (Around 8 minutes vs 2 minutes for Verizon)).
 
 Once your CDN profile has been created, open its blade (panel) and create a new Endpoint, here again, enter the name of the endpoint (the same than the CDN profile and the web app if possible), select ```Web App``` as origin type, select your web app as ```Origin hostname```, the ```Origin path``` should be left blank, and the ```Origin host header``` too (As your application doesn't use it for static file), make sure you keep both HTTP and HTTPS selected. Then create it.
 
@@ -81,7 +81,7 @@ From now, the configuration will be done in the ```Visual Studio Team Service```
 
 From here, you can either use an existing account or create a new one.
 
-Then on the account, create a new project, set your ```project name```, ```description```, ```revision control``` to ```git```, the ```work item process``` doesn't matter (in my case)
+Then on the account, create a new project, set your ```project name```, ```description```, ```revision control``` to ```git```, the ```work item process``` doesn't matter (in my case).
 
 In this case, we are going to keep using Github as source control, but if you prefer, you can put your version control in VSTS directly.
 
@@ -102,12 +102,12 @@ Write-Host "Downloading Hugo"
 Invoke-WebRequest -Uri https://github.com/spf13/hugo/releases/download/v0.20.7/hugo_0.20.7_Windows-64bit.zip -OutFile hugo.zip
 ```
 
-Note: ``Start-BitsTransfer``` would have been more efficient but is not available on VSTS
+Note: ``Start-BitsTransfer``` would have been more efficient but is not available on VSTS.
 
 Extract Hugo binary
 --------------------
 
-Then once you have downloaded Hugo, you need to extract it, create a new task of type ```Extract Files```, set the ```Archive file patterns``` to ```hugo.zip``` and ```Destination Folder``` to ```.```, make sure to uncheck ```Clean destination folder before extracting```
+Then once you have downloaded Hugo, you need to extract it, create a new task of type ```Extract Files```, set the ```Archive file patterns``` to ```hugo.zip``` and ```Destination Folder``` to ```.```, make sure to uncheck ```Clean destination folder before extracting```.
 
 Generate static website
 ------------------------
@@ -121,23 +121,23 @@ Write-Host "Building website"
 
 Publish artifacts (optional)
 ----------------------------
-This is an optional task, but useful if you want to keep a copy somewhere of each generated version, create a ```Publish Build Artifacts``` task, set the ```Path to publish``` to ```$(Build.SourcesDirectory)\public\``` and ```Artifact Type``` to ```Server```
+This is an optional task, but useful if you want to keep a copy somewhere of each generated version, create a ```Publish Build Artifacts``` task, set the ```Path to publish``` to ```$(Build.SourcesDirectory)\public\``` and ```Artifact Type``` to ```Server```.
 
 Deploy to Azure Web App
 -----------------------
 
 Here is the important part, create a new ```Azure App Service Deploy```, make sure you select the correct ```Azure subscription``` (You may have to connect it first), then select the ```App Service Name``` of your Azure Web App.
 
-The only other thing that needs to be modified is the ```Package or folder``` to ```$(Build.SourcesDirectory)\public\```
+The only other thing that needs to be modified is the ```Package or folder``` to ```$(Build.SourcesDirectory)\public\```.
 
-You can try it now, but you will not see any change when using your domain on the CDN because your content is probably cached, we need to purge it
+You can try it now, but you will not see any change when using your domain on the CDN because your content is probably cached, we need to purge it.
 
 Purge CDN
 ---------
 
 The last task you need to create will be a ```Azure Powershell``` task.
 
-Make sure you set ```Azure Connection Type``` to ```Azure Resource Manager```, and set your correct ```Azure RM Subscription```
+Make sure you set ```Azure Connection Type``` to ```Azure Resource Manager```, and set your correct ```Azure RM Subscription```.
 
 Then we are going to set this inline script (You will need to adapt the parameters to match your azure web app name and resource group name:
 
@@ -145,7 +145,7 @@ Then we are going to set this inline script (You will need to adapt the paramete
 Unpublish-AzureRmCdnEndpointContent -ResourceGroupName kedare-lab-blog -ProfileName kedare-lab-blog -EndpointName kedare-lab-blog -PurgeContent "/*"
 ```
 
-Then save everything, you can queue it to try if it's working fine
+Then save everything, you can queue it to try if it's working fine.
 
 Web Hook
 =========
@@ -185,7 +185,7 @@ To force HTTPS in your Hugo website on Azure, you need to add this ```web.config
 </configuration>
 ```
 
-Then every time you build your site using ```hugo```, it will be placed in your website root (And read by IIS when uploaded)
+Then every time you build your site using ```hugo```, it will be placed in your website root (And read by IIS when uploaded).
 
 Conclusion
 ==========
