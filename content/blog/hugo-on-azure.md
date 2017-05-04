@@ -1,7 +1,7 @@
 +++
 date = "2017-05-03T22:41:18+02:00"
 draft = true
-tags = ["golang", "hugo", "azure", "cdn", "ci"]
+tags = ["golang", "hugo", "azure", "cdn", "ci", "hexo", "lektor"]
 title = "Hugo on Azure (Web App, CDN, CI)"
 thumbnail = "images/blog/logo-hugo-on-azure.png"
 +++
@@ -12,6 +12,7 @@ I am using the Premium Verizon VPN from Azure and I am getting more or less the 
 
 The artifacts are now hosted directly in an Azure Web App instead of a bucket, I replace CloudFront by Azure CDN (Premium Verizon) as said just before, and more recently, I've setup CI using Microsoft Visual Studio Team Service (for free)
 
+Of course, this article can be used without any issue with any other website generator (Lektor, Hexo, etc.) easily, just swap the hugo part on the CI by your static site generator.
 
 <!--more-->
 
@@ -80,15 +81,87 @@ From here, you can either use an existing account or create a new one.
 
 Then on the account, create a new project, set your ```project name```, ```description```, ```revision control``` to ```git```, the ```work item process``` doesn't matter (in my case)
 
+In this case, we are going to keep using Github as source control, but if you prefer, you can put your version control in VSTS directly.
 
-TODO TODO TODO
+Once we have created the project, we go to ```Build & Release``` -> '''Builds''' -> '''New''' and select ```start with an empty process``` on the left part of the page.
+
+Get sources
+-----------
+
+First, configure the ```Get Source``` part to point to your repository, you may have to authenticate yourself against Github, make sure you select the correct branch.
+
+Download hugo distribution
+--------------------------
+
+Then you need to add a new task of type ```Powershell```, set a display name, set type to ```Inline script```, and then in the ```Inline script```, set the following (Ajust depending of the Hugo version you need) :
+
+``` powershell
+Write-Host "Downloading Hugo"
+Invoke-WebRequest -Uri https://github.com/spf13/hugo/releases/download/v0.20.7/hugo_0.20.7_Windows-64bit.zip -OutFile hugo.zip
+```
+
+Extract Hugo binary
+--------------------
+
+Then once you have downloaded Hugo, you need to extract it, create a new task of type '''Extract Files''', set the ```Archive file patterns``` to ```hugo.zip``` and ```Destination Folder``` to ```.```, make sure to uncheck ```Clean destination folder before extracting```
+
+Generate static website
+------------------------
+
+Then we create a new ```Powershell``` task to generate the website using Hugo, same than before but with another ```Inline script```:
+
+``` powershell
+Write-Host "Building website"
+.\hugo.exe -v
+```
+
+Publish artifacts (optional)
+----------------------------
+This is an optional task, but useful if you want to keep a copy somewhere of each generated version, create a ```Publish Build Artifacts``` task, set the ```Path to publish``` to ```$(Build.SourcesDirectory)\public\``` and ```Artifact Type``` to ```Server```
+
+Deploy to Azure Web App
+-----------------------
+
+Here is the important part, create a new ```Azure App Service Deploy```, make sure you select the correct ```Azure subscription``` (You may have to connect it first), then select the '''App Service Name''' of your Azure Web App.
+
+The only other thing that need to be modified is the ```Package or folder``` to ```$(Build.SourcesDirectory)\public\```
+
+You can try it now, but you will not see any change when using the your domain on the CDN because your content is probably cached, we need to purge it
+
+Purge CDN
+---------
+
+The last task you need to create will be a '''Azure Powershell''' task.
+
+Make sure you set '''Azure Connection Type''' to '''Azure Resource Manager''', and set your correct ```Azure RM Subscription```
+
+Then we are going to set this inline script (You will need to adapt the parameters to match your azure web app name and resource group name: 
+
+``` powershell
+Unpublish-AzureRmCdnEndpointContent -ResourceGroupName kedare-lab-blog -ProfileName kedare-lab-blog -EndpointName kedare-lab-blog -PurgeContent "/*"
+```
+
+Then save everything, you can queue it to try if it's working fine
+
+Web Hook
+=========
+
+Setup
+-----
+
+Now we need to connect set the job to run everytime you commit on your Github repository, to do so, go to the ```Triggers``` tab of your job and enable ```Continuous integration```, then save, VSTS will automatically configure the Webhook on the Github side.
+
+Try it
+------
+Then you can try it, make sure you have aleady your repository with everything you need (All your hugo directory basically), try to commit and push something, this should trigger the job.
+
 
 Bonus: Force HTTPS
 ========
 
 To force HTTPS in your Hugo website on Azure, you need to add this ```web.config``` in ```static/```:
 
-```
+``` xml
 <configuration xmlns="http://schemas.microsoft.com/.NetConfiguration/v2.0">
     <appSettings/>
     <connectionStrings/>
