@@ -3,6 +3,7 @@ date = "2017-05-03T22:41:18+02:00"
 draft = false
 tags = ["golang", "hugo", "azure", "cdn", "ci", "hexo", "lektor"]
 title = "Hugo on Azure (Web App, CDN, CI)"
+description = "Learn how to deploy Hugo on Azure with continuous integration"
 thumbnail = "images/blog/logo-hugo-on-azure.png"
 +++
 
