@@ -43,3 +43,7 @@ article.li .thumb {
 article.single .thumb {
     height: 30rem;
 }
+
+ul li {
+  margin-bottom: 10px;
+}
