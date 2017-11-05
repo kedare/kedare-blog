@@ -18,6 +18,9 @@ Of course, this article can be used without any issue with any other website gen
 
 <!--more-->
 
+
+EDIT: There is now a plugin to automate the building part (Downloading/extracting hugo and running it), this should make this part easier, but this tutorial still applies for all the rest (Setting up CDN / Web App, CI integration, etc.) : https://marketplace.visualstudio.com/items?itemName=giuliovdev.hugo-extension
+
 All the Azure part will be done on the Azure portal: https://portal.azure.com
 
 The inner: Azure Web App
