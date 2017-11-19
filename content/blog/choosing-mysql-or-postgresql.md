@@ -54,7 +54,7 @@ This was true in the early versions of PostgreSQL and even before, but since Pos
 
 This is maybe one of the things you will see the most in the forums around (Especially from MySQL fanboys), PostgreSQL is not more complicated than MySQL. What will usually scare people is that you will not have all those nonstandard ```SHOW``` commands that make your life easier. In PostgreSQL, we prefer to use standard SQL queries on tables, or views, to have the equivalent, or there are some meta commands available in the ```psql``` shell, and for many things, PostgreSQL is actually far easier than MySQL for everyday life (excluding specific stuff like advanced replication with failover or PITR), here is a simple example, wanna know the size of a database ?
    
-``` sql
+{{< highlight sql >}}
 postgres=# \l+
 	                                                                    List of databases
 	           Name           |  Owner  | Encoding | Collate | Ctype | Access privileges |  Size   | Tablespace |                Description
@@ -68,11 +68,11 @@ postgres=# \l+
 	                          |         |          |         |       | kedare=CTc/kedare |         |            |
 	(7 rows)
 
-```
+{{< / highlight >}}
 
 vs MySQL:
    
-``` sql
+{{< highlight sql >}}
 mysql> SELECT table_schema "Data Base Name",
     -> sum( data_length + index_length ) / 1024 / 1024 "Data Base Size in MB",
     -> sum( data_free )/ 1024 / 1024 "Free Space in MB"
@@ -87,11 +87,11 @@ mysql> SELECT table_schema "Data Base Name",
 | sys                |           0.01562500 |       0.00000000 |
 +--------------------+----------------------+------------------+
 4 rows in set (0.07 sec)
-```
+{{< / highlight >}}
 
 This is of course, without installing any tool others than the bundled ones, of course, you can do a similar query with PostgreSQL, actually this is what this meta command does in the background, you can see it on the Postgres process, if for example you have it running in a terminal with the -d3 option (What I do for development) :
 
-``` sql
+{{< highlight sql >}}
 SELECT d.datname as "Name",
        pg_catalog.pg_get_userbyid(d.datdba) as "Owner",
        pg_catalog.pg_encoding_to_char(d.encoding) as "Encoding",
@@ -107,18 +107,18 @@ SELECT d.datname as "Name",
 FROM pg_catalog.pg_database d
   JOIN pg_catalog.pg_tablespace t on d.dattablespace = t.oid
 ORDER BY 1;
-```
+{{< / highlight >}}
    
 Another example for you, wanna know what is the configuration file used by the server process?
 PostgreSQL :
 
-``` sql
+{{< highlight powershell >}}
 postgres=# SHOW config_file;
                          config_file
 --------------------------------------------------------------
  /Users/kedare/Documents/Databases/Postgresql/postgresql.conf
 (1 row)
-```
+{{< / highlight >}}
 
 MySQL, Well... You know what? There is no way to know what is the loaded configuration file on your server instance. Well if you are playful you can restart your process with an attached ```strace```, you may have a list of the default configuration files that will be loaded when your server process when running it with ```mysqld --verbose --help``` but nothing about the actually loaded file.
 
@@ -206,7 +206,7 @@ This is one of the big things of PostgreSQL, it's not just an RDBMS that thinks 
 
 This may be useful to you if you are from the telecom world, PostgreSQL support natively [IPv4, IPv6 addresses, subnets, and MAC address](https://www.postgresql.org/docs/9.6/static/functions-net.html), and thanks for the object oriented database, PostgreSQL has built-in operators for those that would allow you for example to do this kind of things:
 
-``` sql
+{{< highlight sql >}}
 postgres=# SELECT '2001:4f8:3:ba::32'::inet <<= '2001:4f8:3:ba::/64'::inet;
  ?column?
 ----------
@@ -218,7 +218,7 @@ postgres=# SELECT '192.168.1.42'::inet <<= '192.168.1.0/24'::inet;
 ----------
  t
 (1 row)
-```
+{{< / highlight >}}
 
 Let's explain those queries.
 
@@ -231,7 +231,7 @@ Let's say I want to add a ```<``` operator for the ```point``` data type and the
 
 I would first create the [function](https://www.postgresql.org/docs/9.6/static/sql-createfunction.html) used by this operator and the [operators](https://www.postgresql.org/docs/9.6/static/sql-createoperator.html) :
 
-``` sql
+{{< highlight sql >}}
 create operator = (leftarg = point, rightarg = point, procedure = point_eq, commutator = =);
 
 create function point_lt(point, point)
@@ -240,11 +240,11 @@ returns boolean language sql immutable as $$
 $$;
 
 create operator < (leftarg = point, rightarg = point, procedure = point_lt, commutator = >);
-```
+{{< / highlight >}}
 
 Then now, I want to make those operators useable with the indexes, I have to create an operator class, but before, the operator class needs a function that would allow the database engine to compare 2 data and sort them:
 
-``` sql
+{{< highlight sql >}}
 create function btpointcmp(point, point)
 returns integer language sql immutable as $$
     select case 
@@ -253,11 +253,11 @@ returns integer language sql immutable as $$
         else 1
     end
 $$;
-```
+{{< / highlight >}}
 
 Then the [operator class](https://www.postgresql.org/docs/9.6/static/sql-createopclass.html) :
 
-``` sql
+{{< highlight sql >}}
 create operator class point_ops
     default for type point using btree as
         operator 1 <,
@@ -266,7 +266,7 @@ create operator class point_ops
         operator 4 >=,
         operator 5 >,
         function 1 btpointcmp(point, point);
-```
+{{< / highlight >}}
 
 Examples from this [StackOverflow post](http://stackoverflow.com/questions/34971181/creating-custom-equality-operator-for-postgresql-type-point-for-distinct-cal)
 
@@ -274,7 +274,7 @@ Of course, you can have far more complex operators as you can define more or les
 
 Something to know about this, is that for any table you create, PostgreSQL create an equivalent type, here is a small demo :
 
-``` sql
+{{< highlight sql >}}
 test=# create table inet_allocation(id serial, network inet unique, description character varying);
 CREATE TABLE
 test=# select ((0, '192.168.0.0/24'::inet, 'Main office network')::inet_allocation).description;
@@ -282,8 +282,7 @@ test=# select ((0, '192.168.0.0/24'::inet, 'Main office network')::inet_allocati
 ---------------------
  Main office network
 (1 row)
-
-```
+{{< / highlight >}}
 
 Then you can start using this type anywhere in your database (So basically you have objects with operators and attributes, also useable in your stored procedures).
 
@@ -305,7 +304,7 @@ MySQL has a quite limited feature set on JSON, yes it has [JSON support](https:/
 
 You can forget indexes or constraints like on PostgreSQL, you will have to rely on generated columns, that is far less... interesting. And you need a very recent version of MySQL, at least 5.7.6, here is what is looks like:
 
-``` sql
+{{< highlight sql >}}
 mysql> CREATE TABLE jemp (
     ->     c JSON,
     ->     g INT GENERATED ALWAYS AS (c->"$.id"),
@@ -353,7 +352,7 @@ mysql> SHOW WARNINGS\G
 Message: /* select#1 */ select json_unquote(json_extract(`test`.`jemp`.`c`,'$.name'))
 AS `name` from `test`.`jemp` where (`test`.`jemp`.`g` > 2)
 1 row in set (0.00 sec)
-```
+{{< / highlight >}}
 
 Let's hope that MySQL will get something better in the future. (Most of the limitations are related to the leak of having an extensible typing system like PostgreSQL).
 
@@ -451,15 +450,15 @@ In MySQL, there is no concept of owner. You just have to specify the path to the
 
 For me, the PostgreSQL way is better. As this allow simple scenarios like allow a user to create databases and gives it full right on them, to do the equivalent in MySQL you have to basically give the grant to the user to databases starting with a common prefix, like this:
 
-``` sql
+{{< highlight sql >}}
 GRANT ALL PRIVILEGES ON 'testuser\_%'.* TO 'testuser'@'%';
-```
+{{< / highlight >}}
 
 In PostgreSQL, just do :
 
-``` sql
+{{< highlight sql >}}
 ALTER USER testuser WITH CREATEDB
-```
+{{< / highlight >}}
 
 # What's coming ?
 

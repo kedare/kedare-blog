@@ -100,10 +100,10 @@ Download Hugo distribution
 
 Then you need to add a new task of type ```Powershell```, set a display name, set the type to ```Inline script```, and then in the ```Inline script```, set the following (Ajust depending on the Hugo version you need):
 
-``` powershell
+{{< highlight powershell >}}
 Write-Host "Downloading Hugo"
 Invoke-WebRequest -Uri https://github.com/spf13/hugo/releases/download/v0.20.7/hugo_0.20.7_Windows-64bit.zip -OutFile hugo.zip
-```
+{{< / highlight >}}
 
 Note: ``Start-BitsTransfer``` would have been more efficient but is not available on VSTS.
 
@@ -117,10 +117,9 @@ Generate static website
 
 Then we create a new ```Powershell``` task to generate the website using Hugo, same than before but with another ```Inline script```:
 
-``` powershell
+{{< highlight powershell >}}
 Write-Host "Building website"
-.\hugo.exe -v
-```
+{{< / highlight >}}
 
 Publish artifacts (optional)
 ----------------------------
@@ -144,9 +143,9 @@ Make sure you set ```Azure Connection Type``` to ```Azure Resource Manager```, a
 
 Then we are going to set this inline script (You will need to adapt the parameters to match your azure web app name and resource group name:
 
-``` powershell
+{{< highlight powershell >}}
 Unpublish-AzureRmCdnEndpointContent -ResourceGroupName kedare-lab-blog -ProfileName kedare-lab-blog -EndpointName kedare-lab-blog -PurgeContent "/*"
-```
+{{< / highlight >}}
 
 Then save everything, you can queue it to try if it's working fine.
 
@@ -175,7 +174,7 @@ Bonus: Force HTTPS
 
 To force HTTPS in your Hugo website on Azure, you need to add this ```web.config``` in ```static/```:
 
-``` xml
+{{< highlight xml >}}
 <configuration xmlns="http://schemas.microsoft.com/.NetConfiguration/v2.0">
     <appSettings/>
     <connectionStrings/>
@@ -193,7 +192,7 @@ To force HTTPS in your Hugo website on Azure, you need to add this ```web.config
      </rewrite>
     </system.webServer>
 </configuration>
-```
+{{< / highlight >}}
 
 Then every time you build your site using ```hugo```, it will be placed in your website root (And read by IIS when uploaded).
 

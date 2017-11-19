@@ -12,7 +12,7 @@ Here are some tips to show you the basics of the configuration archive function 
 
 You can setup you router to store all older versions of your configuration, like this :
 
-```
+{{< highlight bash >}}
 archive
   log config
   record rc
@@ -22,18 +22,18 @@ archive
   maximum 14
   rollback filter adaptive
   write-memory
-```
+{{< / highlight >}}
 
 This will, every time you write memory, copy your old startup-config to a file with the current date, like this :
 
-```
+{{< highlight bash >}}
 16 -rw- 7391 Mar 20 2012 20:30:04 +02:00 startup-configMar-20-18-30-05.366-52
 17 -rw- 7391 Mar 21 2012 16:42:50 +02:00 startup-configMar-21-14-42-50.316-53
-```
+{{< / highlight >}}
 
 You can see the current in-memory archives :
 
-```
+{{< highlight bash >}}
 > sh archive
 The maximum archive configurations allowed is 14.
 There are currently 3 archive configurations saved.
@@ -42,4 +42,4 @@ Archive Name
 1 flash:startup-configNov-15-20-28-19.132-0
 2 flash:startup-configNov-16-07-39-50.027-1
 3 flash:startup-configNov-24-15-32-20.014-2
-```
+{{< / highlight >}}

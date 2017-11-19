@@ -14,11 +14,11 @@ Here is a small introduction to Alcatel AOS with some examples.
 
 This does not remove users, passwords and stack configuration, to remove users and passwords, you must delete the UserTable2 file
 
-```
+{{< highlight bash >}}
 delete working/boot.cfg
 delete certified/boot.cfg
 reload (or unplug)
-```
+{{< / highlight >}}
 
 ### Default Login
 
@@ -29,7 +29,7 @@ reload (or unplug)
 
 Some sample commands
 
-```
+{{< highlight bash >}}
 -> show spantree ports active
 Vlan  Port  Oper Status  Path Cost  Role   Loop Guard   Note
 -----+------+------------+---------+-------+-----------+---------
@@ -64,7 +64,7 @@ System Hello Time    =     2
 
 -> bridge 1 protocol rstp
 -> bridge 1 priority 16
-```
+{{< / highlight >}}
 
 (Yes.. sometime it’s bridge, sometime its spantree and debug commands are “stp”… Nothing coherent !)
 
@@ -72,15 +72,15 @@ System Hello Time    =     2
 
 Root guard on port 8/1 vlan 100
 
-```
+{{< highlight bash >}}
 bridge 1x1 100 8/1 restricted-role enable
-```
+{{< / highlight >}}
 
 ## Link Aggregation
 
 Creating a LAG does not create a logical interface (like on Cisco/Juniper/HP), the first physical interface of the LAG become the “Primary Port”, if 1/1 and 1/2 are on the same lag, even if you unplug 1/1, you could see it as root port on STP because 1/2 is still part of the LAG and is up (and is the primary port)
 
-```
+{{< highlight bash >}}
 -> show linkagg 1
 
 Static Aggregate
@@ -112,4 +112,4 @@ Slot/Port Aggregate SNMP Id   Status   Agg  Oper Link Prim Standby
 -> static agg 1/2 agg num 1
 -> static agg 1/3 agg num 2
 -> static agg 1/4 agg num 2
-```
+{{< / highlight >}}
