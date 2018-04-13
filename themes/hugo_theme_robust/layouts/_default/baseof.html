@@ -7,7 +7,7 @@
     {{ else }}
     <link href="//fonts.googleapis.com/css?family=Noto+Sans:400,700|Montserrat" rel="stylesheet">
     {{ end }}
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
     <title>{{ block "title" . }}{{ end }}{{ .Site.Title }}</title>
@@ -31,9 +31,10 @@
       <div class="container">
         <div class="p-logo">
           <div class="social">
-            <a href="https://es.linkedin.com/in/mpoussin"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
-            <a href="https://www.facebook.com/mathieu.poussin"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
-            <a href="https://twitter.com/Kedare"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+            <a href="/about/me.html"><i class="fas fa-pen-square" aria-hidden="true"></i></a>
+            <a href="https://www.facebook.com/mathieu.poussin"><i class="fab fa-facebook-square" aria-hidden="true"></i></a><a href="https://es.linkedin.com/in/mpoussin"><i class="fab fa-linkedin-square" aria-hidden="true"></i></a> <a href="https://twitter.com/Kedare"><i class="fab fa-twitter-square" aria-hidden="true"></i></a>
+            <a href="https://github.com/kedare"><i class="fab fa-github-square"
+              aria-hidden="true"></i></a>
           </div>
           <a href="{{ .Site.BaseURL }}" class="h-logo">{{ .Site.Title }}</a>
         </div>
