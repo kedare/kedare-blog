@@ -61,7 +61,7 @@ ul li {
 
 .job-logo img {
     width: 200px;
-    height: 200px;
+    height: 100%;
     object-fit: contain;
     border-radius: 20px;
 }
@@ -82,7 +82,6 @@ ul li {
 }
 
 .job-tags {
-    position: absolute;
     bottom: 0;
     margin: 20px;
 }
