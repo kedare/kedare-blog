@@ -10,7 +10,7 @@ I have passion for network engineering, telecommunication, programming automatio
 
 You will find in this blog many articles I've been writing (I like to write article and documentation but it's sometime hard to find subjects or time to do so)
 
-Also feel free to check my [LinkedIn](https://es.linkedin.com/in/mpoussin), [Twitter](https://twitter.com/Kedare) or [Github](https://github.com/kedare) profiles
+Also feel free to check my [LinkedIn](https://linkedin.com/in/mpoussin), [Twitter](https://twitter.com/Kedare) or [Github](https://github.com/kedare) profiles
 
 ## Previous Experiences
 
