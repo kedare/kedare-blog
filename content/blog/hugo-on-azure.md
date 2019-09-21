@@ -119,6 +119,7 @@ Then we create a new ```Powershell``` task to generate the website using Hugo, s
 
 {{< highlight powershell >}}
 Write-Host "Building website"
+& hugo
 {{< / highlight >}}
 
 Publish artifacts (optional)
