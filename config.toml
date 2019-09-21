@@ -9,8 +9,8 @@ enableRobotsTXT = false
 
 [author]
   name = "Mathieu Poussin"
-  email = "mathieu.poussin@netyxia.net"
+  email = "blog@mpouss.in"
 
 [params]
-  contact = "mathieu.poussin@netyxia.net"
+  contact = "blog@mpouss.in"
   custom_css = ["css/custom.css"]

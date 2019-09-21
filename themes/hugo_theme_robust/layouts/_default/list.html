@@ -10,12 +10,14 @@
     </header>
     {{ end }}
 
+    {{ if .IsHome }}
     <div class="row">
-      {{ range $i, $p := (.Paginate .Data.Pages).Pages }}
+      {{ range $i, $p := (.Paginate .Site.RegularPages).Pages }}
       <div class="col-sm-6 col-xs-12">{{ $p.Render "li" }}</div>
       {{ if eq (mod (add $i 1) 2) 0 }}<div class="col-sm-12"></div>{{ end }}
       {{ end }}
     </div>
+    {{ end }}
 
     {{ partial "pagination.html" . }}
   </div>
