@@ -57,6 +57,8 @@ ul li {
 
 .job-logo {
     float: left;
+    margin: 10px;
+
 }
 
 .job-logo img {

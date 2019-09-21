@@ -12,14 +12,16 @@ You will find in this blog many articles I've been writing (I like to write arti
 
 Also feel free to check my [LinkedIn](https://linkedin.com/in/mpoussin), [Twitter](https://twitter.com/Kedare) or [Github](https://github.com/kedare) profiles
 
-## Previous Experiences
+## Professional Experiences
 
 <div class="job-experiences">
     {{<job company="OVH" logo="/images/about/ovh.png" title="Network Automation Tech Lead" tags="Python,Go,Cisco,Arista,Orchestraton,Workflow Management">}}
-      TODO
+      Coming soon... :)
     {{</job>}}
     {{<job company="Oceanet Technology" logo="/images/about/oceanet.png" title="Infrastructure Architect" tags="Python,Juniper,AWS,Security,Kubernetes,PCI-DSS">}}
       I was mostly working in the Global Infrastructure Team of Oceanet Technology Group, I was also member of the NBS RED (R&D) Team.
+      
+      I've been working on PCI-DSS compliance audits, cloud security audits on banking infrastructure, kubernetes and datacenter networking.
     {{</job>}}
     {{<job company="Lodgify" logo="/images/about/lodgify.png" title="Head of Infrastructure, IT Manager" tags="Python,Go,Google Cloud,Kubernetes,Salt,CICD,CockroachDB,MongoDB,Fortinet,Security">}}
       As first SRE/Devops of the company and then leader of the infrastructure team, I have was responsible of the good working of the infrastructure and helping the developers.
