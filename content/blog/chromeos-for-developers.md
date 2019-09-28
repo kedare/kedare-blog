@@ -156,19 +156,19 @@ So far I didn't had the need for another VM than the basic one, I do my full dev
 
 You need to know that by default you won't have the same level of integration with others containers, like automatic integration of the desktop apps (They will appear in ChromeOS once installed like if it was a Gnome desktop) and shared folders between ChromeOS and your container, most of those features are available after some configuration on others containers.
 
-So far everything works fine, I do see some issues sometimes, with Jetbrains IDE typically, I get some random freezes on the whole ChromeOS, that should not happen and I reported the issue to the Chromium OS issue tracker.
+So far everything is working fine, I do see some issues sometimes, with Jetbrains IDE typically, I get some random freezes on the whole ChromeOS, that should not happen and I reported the issue to the Chromium OS issue tracker.
 
-Also as you know Chromebook are fanless and low-power computers, you may expect thermal throttling during intense compute (So if you plan to Rust or Java... you'll understand).
+Also as you know Chromebook are fanless and low-power computers, you may expect thermal throttling during intense compute (So if you plan to use Rust or Java... you'll understand).
 
 The fact that for now you can't expose directly sockets to the outside world (Just to the ChromeOS host) can be problematic.
 
 The USB limitation also make impossible the use of ChromeOS for SDR (Software Defined Radio) as the container will not see connected USB devices.
 
-Except that, everything is working perfectly fine, ChromeOS may finally be the Linux coming to the desktop reason ? And having this separated environment make mostly impossible to crash your whole computer because developers like to tweak everything. (And here you get snapshot for free on your containers by the way)
+Except that, everything is working perfectly fine, ChromeOS may finally be the Linux coming to the desktop reason ? And having this separated environment make mostly impossible to crash your whole computer because developers like to tweak everything. (And here you get snapshots for free on your containers by the way)
 
 So at the end, about ChromeOS for developers/SRE :
 
-- The design is secure by default, it's both a good thing as it's very hard to break into (Don't enable development mode)
+- The design is secure by default, it's a good thing as it's very hard to break into (Don't enable development mode) but can be limiting for some specific cases (see after)
 - Not having raw USB access can be an issue, no way to connect specific external devices like usb-to-serial adapters or SDR systems
 - Your containers are isolated from the network, you don't have bridged network to your interfaces and can't expose sockets to the outside
 - Being able to run Android applications is cool
