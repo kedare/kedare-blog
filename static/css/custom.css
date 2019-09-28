@@ -36,6 +36,18 @@ td {
     text-shadow: black 0px 0px 20px;
 }
 
+article.single {
+    box-shadow: #998 0px 0px 10px;
+}
+
+article.li {
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+article.li:hover {
+    box-shadow: #998 0px 0px 10px;
+}
+
 article.li .thumb {
     height: 12rem;
 }
