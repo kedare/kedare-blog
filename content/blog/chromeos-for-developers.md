@@ -49,7 +49,7 @@ You basically have 3 ways of running applications on ChromeOS:
 - Android applications: You can install any Android application on your ChromeOS, I use this for Google Keep or Spotify for example.
 - Linux applications: You have a Linux VM available in Crostini that allows you to have full access and install what you want (I talk about it now)
 
-As ChromeOS top priority is security, each of those subsystem is isolated from each others.
+As ChromeOS top priority is security, each of those subsystem is sandboxed from each others, it's even more true for the Linux mode as you get 2 levels of isolation (LXD and KVM)
 
 In this article I will talk about the the third one as this is the one interesting in our case.
 
@@ -178,3 +178,10 @@ So at the end, about ChromeOS for developers/SRE :
 But let's remember that Crostini is still in beta, so hopefully most of those limitations will be fixed (in a secure way)
 
 I hope you liked this article, feel free to comment, hopefully I will post more in the future about ChromeOS.
+
+There you have some related links :
+
+- [Linux for Chromebooks: Secure Development (Google I/O ’19)](https://www.youtube.com/watch?v=pRlh8LX4kQI&t=1403s)
+- [Running Custom Containers Under Chrome OS](https://chromium.googlesource.com/chromiumos/docs/+/master/containers_and_vms.md)
+- [/r/ChromeOS](https://www.reddit.com/r/chromeos/)
+- [/r/crostini](https://www.reddit.com/r/Crostini/)
