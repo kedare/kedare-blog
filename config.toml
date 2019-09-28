@@ -1,5 +1,5 @@
 baseurl = "https://blog.kedare.net/"
-title = "Kedare / Mathieu Poussin's Engineering Blog"
+title = "Kedare / Mathieu Poussin's Tech Blog"
 languageCode = "en-us"
 theme = "hugo_theme_robust"
 disqusShortname = "kedare-blog"
