@@ -45,7 +45,7 @@ ChromeOS itself is a Linux distribution but you will not get access to the root 
 
 You basically have 3 ways of running applications on ChromeOS:
 
-- ChromeOS Web applications, you install them directly in ChromeOS, those are basically SPA or Chrome extension (with a few more things when running in ChromeOS)
+- ChromeOS Web applications, you install them directly in ChromeOS, those are basically SPA or Chrome extensions (with a few more things when running in ChromeOS)
 - Android applications: You can install any Android application on your ChromeOS, I use this for Google Keep or Spotify for example.
 - Linux applications: You have a Linux VM available in Crostini that allows you to have full access and install what you want (I talk about it now)
 
