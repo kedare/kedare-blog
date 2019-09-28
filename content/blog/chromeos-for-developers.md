@@ -90,7 +90,7 @@ So now let's say you want something else than Debian, as this is standard LXD, y
 
 To do so, you need to start `crosh` that is the native ChromeOS limited shield, to do so, start Google Chrome and use `ctrl+alt+t`, you will get a terminal tab inside your web browser:
 
-``` bash
+{{< highlight bash >}}
 [Pro Tip] Use 'Open as Window' or 'Fullscreen' to prevent Ctrl-W from closing your terminal!
 [Pro Tip] See [crosh] for more information.
 
@@ -104,11 +104,11 @@ If you want to customize the look/behavior, you can use the options page.
 Load it by using the Ctrl+Shift+P keyboard shortcut.
 
 crosh> 
-```
+{{</ highlight >}}
 
 From there need to jump inside the `Termina` VM that is the LXD container host and we can already start using the standard `lxc` CLI and check for our default container running (The one you to go with the Terminal app by default):
 
-``` bash
+{{< highlight bash >}}
 crosh> vsh termina
 (termina) chronos@localhost ~ $ lxc list
 +---------|---------|-----------------------|------|------------|-----------+
@@ -116,11 +116,12 @@ crosh> vsh termina
 +---------|---------|-----------------------|------|------------|-----------+
 | penguin | RUNNING | 100.115.92.195 (eth0) |      | PERSISTENT | 0         |
 +---------|---------|-----------------------|------|------------|-----------+
+{{</ highlight >}}
 ```
 
 So one thing you may want to do is being able to interract with LXD without having to go `crosh` then jumping to `termina`, good thing, LXD allows remote control, so let's set it up so we can control it from our `penguin` container, we will need to spawn a temporary ubuntu instance to get a compatible LXC client:
 
-``` bash
+{{< highlight bash >}}
 (termina) chronos@localhost ~ $ lxc config set core.https_address :8443
 (termina) chronos@localhost ~ $ lxc config set core.trust_password wowsupersecret
 (termina) chronos@localhost ~ $ lxc launch images:ubuntu/18.04 ubuntu
@@ -129,11 +130,11 @@ So one thing you may want to do is being able to interract with LXD without havi
 (termina) chronos@localhost ~ $ lxc file push /tmp/lxc penguin/usr/local/bin/lxc
 (termina) chronos@localhost ~ $ lxc stop --force ubuntu
 (termina) chronos@localhost ~ $ lxc delete ubuntu
-```
+{{</ highlight >}}
 
 Then on your `penguin` container:
 
-``` bash
+{{< highlight bash >}}
 > $ ip -4 route show
 default via 100.115.92.193 dev eth0 
 100.115.92.192/28 dev eth0 proto kernel scope link src 100.115.92.195
@@ -148,7 +149,7 @@ Client certificate stored at server:  crostini
 +---------|---------|-----------------------|------|------------|-----------+                                                                     
 | penguin | RUNNING | 100.115.92.195 (eth0) |      | PERSISTENT | 0         |                                                                     
 +---------|---------|-----------------------|------|------------|-----------+
-```
+{{</ highlight >}}
 
 There you should be able to control everything from your `penguin` container.
 
