@@ -43,7 +43,9 @@ So I decided to order it, from the US as it's a mess in France to get a QWERTY k
 # ChromeOS
 
 <center>
+
   ![ChromeOS Architecture](/images/blog/chromeos-architecture.png)
+
 </center>
 
 
