@@ -4,7 +4,6 @@ languageCode = "en-us"
 theme = "hugo_theme_robust"
 disqusShortname = "kedare-blog"
 uglyurls = true
-googleAnalytics = "UA-48657517-2"
 enableRobotsTXT = false
 
 [markup.goldmark.renderer]

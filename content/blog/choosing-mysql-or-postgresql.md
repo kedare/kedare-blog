@@ -33,9 +33,10 @@ Take in considerations that projects and companies using them are not exclusive,
 
 
 <center>
-![http://www.myfrenchlife.org/2013/11/28/guilty-french-cliches-stereotypes/](/images/blog/cliches.jpg)
 
-Credits to myfrenchlife.org
+  ![http://www.myfrenchlife.org/2013/11/28/guilty-french-cliches-stereotypes/](/images/blog/cliches.jpg)
+
+  Credits to myfrenchlife.org
 </center>
 
 Something to know if that both MySQL and PostgreSQL have their clichés, I will try to explain them and tell you if they are true or not.
@@ -383,7 +384,11 @@ https://dev.mysql.com/doc/refman/5.7/en/group-replication.html
 
 Here is a typical architecture with MySQL Group Replication : 
 
-<center>![MySQL Group Replication Schematics](/images/blog/mysql-group-replication.png)</center>
+<center>
+
+  ![MySQL Group Replication Schematics](/images/blog/mysql-group-replication.png)
+
+</center>
 
 
 ### MySQL Cluster
@@ -398,7 +403,11 @@ https://dev.mysql.com/doc/refman/5.7/en/mysql-cluster.html
 
 Here is the typical architecture with MySQL Cluster
 
-<center>![MySQL Cluster Schematics](/images/blog/mysql-cluster-components.png)</center>
+<center>
+
+  ![MySQL Cluster Schematics](/images/blog/mysql-cluster-components.png)
+
+</center>
 
 If you want to play with MySQL cluster, I invite you to read this article so you can get your cluster ready in a few minutes : http://mikaelronstrom.blogspot.com.es/2017/01/mysql-cluster-up-and-running-in-less.html
 
@@ -414,7 +423,11 @@ https://github.com/sorintlab/stolon
 
 > stolon is a cloud native PostgreSQL manager for PostgreSQL high availability. It's cloud native because it'll let you keep an high available PostgreSQL inside your containers (kubernetes integration) but also on every other kind of infrastructure (cloud IaaS, old style infrastructures etc...)
 
-<center>![PostgreSQL Stolon Components](/images/blog/postgresql-stolon-components.png)</center>
+<center>
+
+  ![PostgreSQL Stolon Components](/images/blog/postgresql-stolon-components.png)
+
+</center>
 
 It can be deployed in a few minutes in a Kubernetes cluster, from my test it was working quite fine, but I didn't have the required knowledge to put a Kubernetes cluster in production, so I didn't explore more yet this solution as I preferred to learn Kubernetes first (Not just for this but in general).
 
@@ -432,7 +445,11 @@ http://www.postgres-xl.org/
 >  - Mixed-workload environments
 >  - Multi-tenant provider hosted environments
 
-<center>![Postgres-XL Components](/images/blog/postgresql-xl-components.jpg)</center>
+<center>
+
+  ![Postgres-XL Components](/images/blog/postgresql-xl-components.jpg)
+
+</center>
 
 This is a fork of PostgreSQL made for scaling-out. I didn't have the occasion to experiment with it, as I think, from what I've read that it is probably overkill for most of the deployments.
 

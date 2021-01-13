@@ -32,7 +32,11 @@ For this component, you can use without any problem the free version, you don't 
 
 Start by creating your new Web App, define a new resource group if needed, make sure you create a new App Service in your location (Well it doesn't really matter as the CDN will redistribute your content), the only real important thing on your App Service is to select the "Free" pricing tier (Except if you expect your artifacts to exceed 1GB).
 
-<center>![Free pricing tier](/images/blog/azure-hugo-web-app-setup.png)</center>
+<center>
+
+  ![Free pricing tier](/images/blog/azure-hugo-web-app-setup.png)
+
+</center>
 
 Once created, you should be able to open the default website in your Azure Web App, for example, http://kedare-lab-blog.azurewebsites.net/
 
@@ -155,7 +159,11 @@ Result
 
 Here is how the full process should looks like :
 
-<center>![Free pricing tier](/images/blog/azure-hugo-process.png)</center>
+<center>
+
+  ![Free pricing tier](/images/blog/azure-hugo-process.png)
+
+</center>
 
 Web Hook
 =========

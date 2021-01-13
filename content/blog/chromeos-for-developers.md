@@ -32,13 +32,19 @@ I considered the following options :
 
 So I started to check for Chromebooks, the best option I found was the Asus Chromebook C434, I wanted at least 8GB of memory, a good and robust design, an backlight keyboard, so this one is the perfect match.
 
-<center>![Asus C434](/images/blog/asus-c434.jpg)</center>
+<center>
+
+  ![Asus C434](/images/blog/asus-c434.jpg)
+
+</center>
 
 So I decided to order it, from the US as it's a mess in France to get a QWERTY keyboard, I got very surprised by the build quality once received it, it feels very solid (Even more than the recent Macbooks).
 
 # ChromeOS
 
-<center>![ChromeOS Architecture](/images/blog/chromeos-architecture.png)</center>
+<center>
+  ![ChromeOS Architecture](/images/blog/chromeos-architecture.png)
+</center>
 
 
 ChromeOS itself is a Linux distribution but you will not get access to the root account or even to a full shell (Except if you go to developer mode but that will basically shut most of the security systems and that's not what we want).
@@ -117,7 +123,6 @@ crosh> vsh termina
 | penguin | RUNNING | 100.115.92.195 (eth0) |      | PERSISTENT | 0         |
 +---------|---------|-----------------------|------|------------|-----------+
 {{</ highlight >}}
-```
 
 So one thing you may want to do is being able to interract with LXD without having to go `crosh` then jumping to `termina`, good thing, LXD allows remote control, so let's set it up so we can control it from our `penguin` container, we will need to spawn a temporary ubuntu instance to get a compatible LXC client:
 
