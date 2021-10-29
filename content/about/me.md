@@ -15,6 +15,10 @@ Also feel free to check my [LinkedIn](https://linkedin.com/in/mpoussin), [Twitte
 
 ## Professional Experiences
 <div class="job-experiences">
+    {{<job company="Scaleway - ILIAD Group" logo="/images/about/scaleway.png" title="Network Automation Engineer" tags="Python,Rust,Cisco,Juniper,Orchestration,Workflow Management,Observability">}}
+      I joined Scaleway as first member of the "Network Systems and Automation", creating the team, our objective is to develop and maintain the tools used by the network engineer, including the automation and observability tools.
+      Most of our stack is developed in Python and Rust (Rust where we can, Python where we must).
+    {{</job>}}
     {{<job company="IPPON Technologies" logo="/images/about/ippon.png" title="DevOps, Cloud & Infrastructure Consultant" tags="Python,Go,AWS,GCP,Azure,DevOps">}}
       I joined IPPON Technologies as consultant, I will join various client to help them achieve their objectives, architecting their infrastructure (cloud or datacenters),
       coding custom tools or solution, training them about DevOps methodology and good practices
