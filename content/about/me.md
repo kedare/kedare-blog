@@ -1,13 +1,13 @@
 +++
 title = "About me"
 thumbnail = "images/about/me.jpg"
-date = "2018-04-13"
+date = "2021-10-29"
 +++
 
 ## Me
 
 I have passion for network engineering, telecommunication, programming automation, programming and infrastructure in general.
-I am currently working at [IPPON Technologies](http://ippon.tech) as Devops, Cloud & Infrastructure Consultant.
+I am currently working at Scaleway as Network Automation Engineer.
 
 You will find in this blog many articles I've been writing.
 
