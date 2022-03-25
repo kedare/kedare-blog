@@ -6,12 +6,21 @@ jobs:
       - attach_workspace:
           at: output/
       - run: ls -lah output/
+  verify-az:
+    executor: azure-cli/default
+    steps:
+      - azure-cli/install
+      - run:
+          command: az -v
+          name: Verify Azure CLI is installed
 orbs:
   hugo: circleci/hugo@0.2
+  azure-cli: circleci/azure-cli@1.0.0
 version: 2.1
 workflows:
   main:
     jobs:
+      - verify-az
       - hugo/build:
           html-proofer: true
           source: ./
