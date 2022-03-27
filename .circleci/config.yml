@@ -1,7 +1,6 @@
 jobs:
   deploy:
-    docker:
-      - image: azure-cli/default
+    executor: azure-cli/default
     steps:
       - attach_workspace:
           at: output/
