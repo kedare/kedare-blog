@@ -1,32 +1,20 @@
-jobs:
-  deploy:
-    executor: azure-cli/default
-    steps:
-      - attach_workspace:
-          at: output/
-      - run: ls -lah output/
-  verify-azure-cli:
-    executor: azure-cli/default
-    steps:
-      - azure-cli/install
-      - run:
-          command: az -v
-          name: Verify Azure CLI is installed
-orbs:
-  hugo: circleci/hugo@0.2
-  azure-cli: circleci/azure-cli@1.2.2
-version: 2.1
-workflows:
-  main:
-    jobs:
-      - verify-azure-cli
-      - hugo/build:
-          html-proofer: true
-          source: ./
-          version: '0.95'
-          requires:
-            - verify-azure-cli
-      - deploy:
-          requires:
-            - hugo/build
-            - verify-azure-cli
+version: 2
+  jobs:
+    build:
+      working_directory: /src/
+      docker:
+        - image: klakegg/hugo:0.95.0-ext-alpine-ci
+      steps:
+        - checkout
+        - run:
+            command: hugo
+        - persist_to_workspace:
+            root: public
+    push:
+      docker:
+        - image: rclone/rclone:1.58
+      steps:
+        - attach_workspace:
+            at: public
+        - run: rclone config create blog azureblob account="$AZURE_BLOB_NAME" key="$AZURE_BLOB_KEY"
+        - run: rclone -v sync "public/" "blog:/\$web/"
