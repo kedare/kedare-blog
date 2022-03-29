@@ -6,7 +6,7 @@ steps:
   - name: build
     image: plugins/hugo
     settings:
-      hugo_version: 0.96.0
+      hugo_version: 0.92.1
       validate: true
       extended: true
       config: config.toml
