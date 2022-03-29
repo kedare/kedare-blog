@@ -18,7 +18,7 @@ steps:
     - ls -lha /src/public/
 
   - name: push
-    image: rclone
+    image: rclone/rclone:1.58
     environment:
       AZURE_BLOB_NAME:
         from_secret: AZURE_BLOB_NAME
