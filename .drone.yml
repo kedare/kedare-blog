@@ -6,8 +6,11 @@ steps:
   - name: build
     image: plugins/hugo
     settings:
-      hugo_version: 0.95
+      hugo_version: 0.96.0
       validate: true
+      extended: true
+      config: config.toml
+      content: content
     commands:
     - apk add libc6-compat libstdc++
     - /bin/drone-hugo
