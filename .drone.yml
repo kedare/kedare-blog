@@ -3,7 +3,7 @@ type: docker
 name: default
 
 workspace:
-  path: /out/
+  path: /src/
 
 steps:
   - name: build
@@ -16,9 +16,10 @@ steps:
       output: /out/
     commands:
     - /bin/drone-hugo
-    - ls -lha /out/
+    - ls -lha /src/public/
+
   - name: push
-    image: azurecli:latest
+    image: mcr.microsoft.com/azure-cli:latest
     environment:
       AZURE_APPLICATION_ID:
         from_secret: AZURE_APPLICATION_ID
@@ -27,5 +28,6 @@ steps:
       AZURE_TENANT_ID:
         from_secret: AZURE_TENANT_ID
     commands:
+      - ls -lha /src/public
       - az version
       - az login --service-principal -u $AZURE_APPLICATION_ID -p $AZURE_SECRET --tenant $AZURE_TENANT_ID
