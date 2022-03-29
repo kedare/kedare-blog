@@ -2,17 +2,30 @@ kind: pipeline
 type: docker
 name: default
 
+workspace:
+  path: /out/
+
 steps:
   - name: build
     image: plugins/hugo
     settings:
       hugo_version: 0.92.1
       validate: true
-      extended: true
+      extended: false
       config: config.toml
-      content: content
+      output: /out/
     commands:
-    - apk add libc6-compat libstdc++
     - /bin/drone-hugo
-
-
+    - ls -lha /out/
+  - name: push
+    image: azurecli:latest
+    environment:
+      AZURE_APPLICATION_ID:
+        from_secret: AZURE_APPLICATION_ID
+      AZURE_SECRET:
+        from_secret: AZURE_SECRET
+      AZURE_TENANT_ID:
+        from_secret: AZURE_TENANT_ID
+    commands:
+      - az version
+      - az login --service-principal -u $AZURE_APPLICATION_ID -p $AZURE_SECRET --tenant $AZURE_TENANT_ID
