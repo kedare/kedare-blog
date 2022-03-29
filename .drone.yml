@@ -27,9 +27,9 @@ steps:
     commands:
       - rclone config create blog azureblob account="$AZURE_BLOB_NAME" key="$AZURE_BLOB_KEY"
       - rclone -v sync public/ blog:/\$web/
-        #when:
-        #  branch:
-        #    - master
-        #  event:
-        #    exclude:
-        #      - pull_request
+    when:
+      branch:
+        - master
+      event:
+        exclude:
+          - pull_request
