@@ -11,7 +11,7 @@ jobs:
       - persist_to_workspace:
           root: public
           paths:
-            - /
+            - .
   push:
     docker:
       - image: rclone/rclone:1.58
