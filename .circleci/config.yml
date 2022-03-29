@@ -7,7 +7,7 @@ jobs:
     steps:
       - checkout
       - run:
-          command: hugo
+          command: hugo -d /src/public
       - persist_to_workspace:
           root: public
   push:
