@@ -1,20 +1,20 @@
 version: 2
-  jobs:
-    build:
-      working_directory: /src/
-      docker:
-        - image: klakegg/hugo:0.95.0-ext-alpine-ci
-      steps:
-        - checkout
-        - run:
-            command: hugo
-        - persist_to_workspace:
-            root: public
-    push:
-      docker:
-        - image: rclone/rclone:1.58
-      steps:
-        - attach_workspace:
-            at: public
-        - run: rclone config create blog azureblob account="$AZURE_BLOB_NAME" key="$AZURE_BLOB_KEY"
-        - run: rclone -v sync "public/" "blog:/\$web/"
+jobs:
+  build:
+    working_directory: /src/
+    docker:
+      - image: klakegg/hugo:0.95.0-ext-alpine-ci
+    steps:
+      - checkout
+      - run:
+          command: hugo
+      - persist_to_workspace:
+          root: public
+  push:
+    docker:
+      - image: rclone/rclone:1.58
+    steps:
+      - attach_workspace:
+          at: public
+      - run: rclone config create blog azureblob account="$AZURE_BLOB_NAME" key="$AZURE_BLOB_KEY"
+      - run: rclone -v sync "public/" "blog:/\$web/"
