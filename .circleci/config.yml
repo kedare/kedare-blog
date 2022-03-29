@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 jobs:
   build:
     working_directory: /src/
@@ -20,3 +20,10 @@ jobs:
           at: public
       - run: rclone config create blog azureblob account="$AZURE_BLOB_NAME" key="$AZURE_BLOB_KEY"
       - run: rclone -v sync "public/" "blog:/\$web/"
+
+workflows:
+  version: 2
+  build-and-push:
+    jobs:
+      - build
+      - push
