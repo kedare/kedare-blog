@@ -13,7 +13,6 @@ steps:
       validate: true
       extended: false
       config: config.toml
-      output: /out/
     commands:
     - /bin/drone-hugo
     - ls -lha /src/public/
