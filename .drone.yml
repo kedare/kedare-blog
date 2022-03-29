@@ -1,0 +1,35 @@
+kind: pipeline
+type: docker
+name: default
+
+workspace:
+  path: /src/
+
+steps:
+  - name: build
+    image: plugins/hugo
+    settings:
+      hugo_version: 0.92.1
+      validate: true
+      extended: false
+      config: config.toml
+    commands:
+    - /bin/drone-hugo
+    - ls -lha /src/public/
+
+  - name: push
+    image: rclone/rclone:1.58
+    environment:
+      AZURE_BLOB_NAME:
+        from_secret: AZURE_BLOB_NAME
+      AZURE_BLOB_KEY:
+        from_secret: AZURE_BLOB_KEY
+    commands:
+      - rclone config create blog azureblob account="$AZURE_BLOB_NAME" key="$AZURE_BLOB_KEY"
+      - rclone -v sync public/ blog:/\$web/
+    when:
+      branch:
+        - master
+      event:
+        exclude:
+          - pull_request
