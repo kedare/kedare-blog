@@ -26,4 +26,10 @@ steps:
         from_secret: AZURE_BLOB_KEY
     commands:
       - rclone config create blog azureblob account="$AZURE_BLOB_NAME" key="$AZURE_BLOB_KEY"
-      - rclone sync public/ blog:/$web/
+      - rclone -v sync public/ blog:/\$web/
+        #when:
+        #  branch:
+        #    - master
+        #  event:
+        #    exclude:
+        #      - pull_request
