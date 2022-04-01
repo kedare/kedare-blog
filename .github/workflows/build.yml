@@ -46,7 +46,7 @@ jobs:
           name: website
 
       - name: Decompress
-        rum: tar xvf website.tar.bz2
+        run: tar xvf website.tar.bz2
 
       - name: Configure credentials
         run: 'rclone config create blog azureblob account="${{secrets.BlogStorageName}}" key="${{secrets.BlogStorageKey}}"'
