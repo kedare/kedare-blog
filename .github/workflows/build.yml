@@ -32,7 +32,7 @@ jobs:
   
   deploy:
     needs: [build]
-    if: github.ref == 'refs/heads/master'
+    #if: github.ref == 'refs/heads/master'
     runs-on: rclone/rclone:1.58
     steps:
       - name: Download website
