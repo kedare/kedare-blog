@@ -23,12 +23,15 @@ jobs:
 
       - name: Build with Hugo
         run: hugo --minify
+      
+      - name: Compress
+        run: tar cjvf website.tar.bz2 public/
 
       - name: Upload website
         uses: actions/upload-artifact@v2
         with:
           name: website
-          path: public/
+          path: website.tar.bz2
   
   deploy:
     needs: [build]
@@ -41,8 +44,12 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: website
-          if-no-files-found: error
+
+      - name: Decompress
+        rum: tar xvf website.tar.bz2
+
       - name: Configure credentials
         run: 'rclone config create blog azureblob account="${{secrets.BlogStorageName}}" key="${{secrets.BlogStorageKey}}"'
+        
       - name: Push website to bucket
         run: 'rclone -v sync "/src/public/" "blog:/\$web/"'
