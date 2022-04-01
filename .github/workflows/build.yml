@@ -56,4 +56,4 @@ jobs:
         run: 'rclone config create blog azureblob account="$BLOG_STORAGE_NAME" key="$BLOG_STORAGE_KEY"'
         
       - name: Push website to bucket
-        run: 'rclone -v sync "/src/public/" "blog:/\$web/"'
+        run: 'rclone -v sync "public/" "blog:/\$web/"'
