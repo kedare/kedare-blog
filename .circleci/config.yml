@@ -12,7 +12,7 @@ jobs:
           root: public
           paths:
             - .
-  push:
+  deploy:
     docker:
       - image: rclone/rclone:1.58
     steps:
@@ -26,6 +26,9 @@ workflows:
   build-and-push:
     jobs:
       - build
-      - push:
-         requires:
+      - deploy:
+          filters:
+            branches:
+              only: master
+          requires:
            - build
