@@ -49,7 +49,11 @@ jobs:
         run: tar xvf website.tar.bz2
 
       - name: Configure credentials
-        run: 'rclone config create blog azureblob account="${{secrets.BlogStorageName}}" key="${{secrets.BlogStorageKey}}"'
+        shell: bash
+        env:
+            BLOG_STORAGE_NAME: ${{ secrets.BLOG_STORAGE_NAME }}
+            BLOG_STORAGE_KEY: ${{ secrets.BLOG_STORAGE_KEY }}
+        run: 'rclone config create blog azureblob account="$BLOG_STORAGE_NAME" key="$BLOG_STORAGE_KEY"'
         
       - name: Push website to bucket
         run: 'rclone -v sync "/src/public/" "blog:/\$web/"'
