@@ -32,6 +32,7 @@ jobs:
   
   deploy:
     needs: [build]
+    if: github.ref == 'refs/heads/master'
     runs-on: rclone/rclone:1.58
     steps:
       - name: Download website
@@ -41,7 +42,5 @@ jobs:
           if-no-files-found: error
       - name: Configure credentials
         run: 'rclone config create blog azureblob account="${{secrets.BlogStorageName}}" key="${{secrets.BlogStorageKey}}"'
-        if: github.ref == "refs/heads/master"
       - name: Push website to bucket
         run: 'rclone -v sync "/src/public/" "blog:/\$web/"'
-        if: github.ref == "refs/heads/master"
