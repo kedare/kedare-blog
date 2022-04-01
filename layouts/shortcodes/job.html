@@ -1,10 +1,12 @@
 {{- $tags := split (.Get "tags") "," -}}
 <div class="job-experience">
     <div class="job-logo">
-        <img src="{{ .Get "logo" }}" alt="{{ .Get "company" }}" />
+        <a href="{{ .Get "url" }}">
+            <img src="{{ .Get "logo" }}" alt="{{ .Get "company" }}" />
+        </a>
     </div>
     <div class="job-data">
-        <div class="job-title">{{ .Get "title" }}</div>
+        <div class="job-title">{{ .Get "title" }} at {{ .Get "company" }}</div>
         <div class="job-description">
             {{ replace .Inner "      " "" | markdownify }}
         </div>
