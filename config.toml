@@ -11,8 +11,8 @@ unsafe= true
 
 [author]
   name = "Mathieu Poussin"
-  email = "blog@mpouss.in"
+  email = "blog@kedare.net"
 
 [params]
-  contact = "blog@mpouss.in"
+  contact = "blog@kedare.net"
   custom_css = ["css/custom.css"]
