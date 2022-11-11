@@ -20,6 +20,7 @@
     {{ range .Site.Params.custom_css }}
       <link rel="stylesheet" href="{{ $.Site.BaseURL }}{{ . }}">
     {{ end }}
+    {{ partial "analytics.html" . }}
   </head>
 
   <body>
