@@ -107,3 +107,8 @@ ul li {
     padding: 4px;
     display: inline-block;
 }
+
+article .description {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
