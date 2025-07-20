@@ -8,7 +8,7 @@ td {
     border-bottom: 1px solid lightgray;
 }
 
-.article-body pre code {
+spanpan>.article{{ .Get "company" }}-bod</s
     font-size: 0.9em;
 }
 
@@ -88,11 +88,21 @@ ul li {
 
 .job-title {
     font-size: 1.3em;
-    margin: 10px;
+    margin: 20px;
+}
+
+.job-title .function {
+    font-weight: bold;
+}
+
+.job-title .company {
+    font-style: italic;
 }
 
 .job-description {
     margin: 20px;
+    padding-left: 10px;
+    border-left: 4px #ccc solid;
 }
 
 .job-tags {

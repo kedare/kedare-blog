@@ -6,7 +6,7 @@
         </a>
     </div>
     <div class="job-data">
-        <div class="job-title">{{ .Get "title" }} at {{ .Get "company" }}</div>
+        <div class="job-title"><span class="function">{{ .Get "title" }}</span> at <span class="company">{{ .Get "company" }}</span></div>
         <div class="job-description">
             {{ replace .Inner "      " "" | markdownify }}
         </div>

@@ -14,8 +14,11 @@ Also feel free to check my [LinkedIn](https://linkedin.com/in/mpoussin), [Twitte
 
 ## Professional Experiences
 <div class="job-experiences">
+    {{<job company="Revolut" url="https://revolut.com/" logo="/images/about/revolut.png" title="Senior Site Reliability Engineer" tags="Python,Ansible,Google Cloud, PostgreSQL, Amazon, Datacenters, Orchestration, Network Engineering">}}
+      Part of the Revolut SRE team, I am taking care of the infrastructure running all our various application from both Google Cloud, AWS and our on premise infrastructure, I am also working on the management of all our database systems and the development of orchestrations around these.
+    {{</job>}}
     {{<job company="Cardiologs - Philips Health Care" url="https://cardiologs.com/" logo="/images/about/cardiologs.png" title="Staff Site Reliability Engineer" tags="Python,Ruby,Golang,Azure,IT,Kubernetes,HDS,PostgreSQL">}}
-      I joined Cardiologs as Staff Site Reliability Engineer, I am taking care with the others engineer of all the environment of the various products from the company, mostly in Kubernetes and with large data set in their database and cloud platform.
+      Part of the SRE team at Cardiologs / Philips, I am taking care with the others engineer of all the environment of the various products from the company, mostly in Kubernetes and with large data set in their database and cloud platform.
     {{</job>}}
     {{<job company="Scaleway - ILIAD Group" url="https://scaleway.com/" logo="/images/about/scaleway.png" title="Network Automation Engineer" tags="Python,Rust,Cisco,Juniper,Orchestration,Workflow Management,Observability">}}
       I joined Scaleway as first member of the "Network Systems and Automation", creating the team, our objective is to develop and maintain the tools used by the network engineer, including the automation and observability tools.
@@ -32,7 +35,7 @@ Also feel free to check my [LinkedIn](https://linkedin.com/in/mpoussin), [Twitte
     {{</job>}}
     {{<job company="Oceanet Technology" url="https://www.oceanet-technology.com/" logo="/images/about/oceanet.png" title="Infrastructure Architect" tags="Python,Juniper,AWS,Security,Kubernetes,PCI-DSS">}}
       I was mostly working in the Global Infrastructure Team of Oceanet Technology Group, I was also member of the NBS RED (R&D) Team.
-      
+
       I've been working on PCI-DSS compliance audits, cloud security audits on banking infrastructure, kubernetes and datacenter networking.
     {{</job>}}
     {{<job company="Lodgify" url="https://www.lodgify.com/" logo="/images/about/lodgify.png" title="Head of Infrastructure, IT Manager" tags="Python,Go,Google Cloud,Kubernetes,Salt,CICD,CockroachDB,MongoDB,Fortinet,Security">}}
